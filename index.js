@@ -6,7 +6,7 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 43.732240, lng: -79.618660 },
     zoom: 10,
-    mapTypeId: 'hybrid',
+    mapTypeId: 'roadmap',
     mapTypeControl: false,
     streetViewControl: false,
     fullscreenControl: false
@@ -36,15 +36,34 @@ function initMap() {
       map.setCenter(place.geometry.location);
       map.setZoom(18);
     }
-  })
+  });
   // Tilts 45 degrees once zoomed in
   map.setTilt(0);
   map.data.loadGeoJson('test.json')
   // Set style based on each feature (city)
   map.data.setStyle(feature => {
     var val = Math.random();
-    var color = val > 0.5 ? 'red': 'blue';
-    console.log(feature.getProperty("name")); 
+    // var color = val > 0.5 ? 'red': 'blue';
+    // 1.98 - 5.96
+    var mid = (1.98+5.96)/2;
+    var baseBlue = 120;
+    var minMax = 30;
+    var newBlue = baseBlue;
+    var newOffset = minMax;
+    
+    if (feature.getProperty("solar")) {
+      // If has parent
+      minMax = Math.pow((1/(feature.getProperty("solar")-mid)), 1) * minMax;
+      console.log(minMax);
+      if (feature.getProperty("parent")) {
+        let parent = map.data.getFeatureById(feature.getProperty("parent")).getProperty("solar");
+        let child = feature.getProperty("solar");
+        console.log("Parent: " + parent + ", Child: " + child);
+      }
+    }
+    var color = `rgb(0,0,${newBlue+newOffset},1)`;
+    // console.log(feature.getProperty("name")); 
+    
     return {
         fillColor: color,
         strokeWeight: 2,
@@ -59,7 +78,7 @@ function initMap() {
       infoWindow.close();
 
       let latLng = e.latLng;
-      let houseImage = `https://maps.googleapis.com/maps/api/streetview?size=600x350&location=${latLng.lat()},${latLng.lng()}&fov=100&pitch=0&key=AIzaSyCwWIWTgA5sHugpBZnjjRG6HcU0a6NAhlc`;
+      let houseImage = `https://maps.googleapis.com/maps/api/streetview?size=600x350&location=${latLng.lat()},${latLng.lng()}&fov=100&pitch=0&key=AIzaSyBhFGvR9_eW2muXvvJvUZ0wnCgT6kw6_1M`;
       console.log(latLng.lat() + ": " + latLng.lng());
       console.log(houseImage);
 
