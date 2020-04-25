@@ -44,7 +44,7 @@ function initMap() {
   map.data.setStyle(feature => {
     var val = Math.random();
     var color = val > 0.5 ? 'red': 'blue';
-    console.log(feature.getProperty("name"));
+    console.log(feature.getProperty("name")); 
     return {
         fillColor: color,
         strokeWeight: 2,
