@@ -5,6 +5,9 @@ click==7.1.1
 distlib==0.3.0
 filelock==3.0.12
 Flask==1.1.2
+Flask-Cors==3.0.8
+google-cloud==0.34.0
+google-cloud-automl==0.10.0
 gunicorn==20.0.4
 idna==2.9
 itsdangerous==1.1.0
