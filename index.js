@@ -1,5 +1,6 @@
 var map;
 var cityName = document.getElementById("city-name");
+var addressInput = document.getElementById("address-input");
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -7,11 +8,35 @@ function initMap() {
     zoom: 10,
     mapTypeId: 'hybrid',
     mapTypeControl: false,
-    streetViewControl: false
+    streetViewControl: false,
+    fullscreenControl: false
   });
   var infoWindow = new google.maps.InfoWindow({
       content: ''
   });
+  // Autocomplete
+  autocomplete = new google.maps.places.Autocomplete(addressInput, {
+    bounds: new google.maps.LatLngBounds(new google.maps.LatLng(40.913529, -96.952345), new google.maps.LatLng(55.850662, -73.661330)),
+    strictBounds: true,
+    types: ['address']
+  });
+
+  autocomplete.addListener('place_changed', () => {
+    infoWindow.close();
+    var place = autocomplete.getPlace();
+    if (!place.geometry) {
+      // User entered name of place not suggested
+      window.alert("No details available for: '" + place.name + "'" + ", please input a valid suggestion");
+      return;
+    }
+    // Place was suggested
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(18);
+    }
+  })
   // Tilts 45 degrees once zoomed in
   map.setTilt(0);
   map.data.loadGeoJson('test.json')

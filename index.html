@@ -7,16 +7,19 @@
     <link rel="stylesheet" type="text/css" href="./main.css" />
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap" rel="stylesheet">
   </head>
   <body>
+    <input id="address-input" placeholder="Type an address" type="text">
     <div id="city-name"> 
     </div>
     <div id="map"></div>
     <script src="./index.js"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwWIWTgA5sHugpBZnjjRG6HcU0a6NAhlc&callback=initMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwWIWTgA5sHugpBZnjjRG6HcU0a6NAhlc&callback=initMap&sensor=false&libraries=places"
       async
       defer
     ></script>
+    
   </body>
 </html>
