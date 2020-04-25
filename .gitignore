@@ -1,2 +1,4 @@
 .vscode
 venv
+*\google_creds.json
+*\keys.json
