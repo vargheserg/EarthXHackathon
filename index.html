@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EarthxHacks</title>
+    <meta property="og:title" content="Cancelled Toronto" />
+    <link rel="icon" type="image/png" href="https://imgur.com/mfteAUM.png" />
+    <link href="/styles.css" rel="stylesheet" />
+    <title>Cancelled Toronto</title>
     <link rel="stylesheet" type="text/css" href="./main.css" />
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./home.css">
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <input id="address-input" placeholder="Type an address" type="text">
-    <div id="city-name"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+</head>
+<body class="body">
+    <header class="header">
+      <div class="container">
+        <div class="header-title">
+          <i class="sun outline icon"></i>Bright Light
+        </div>
+        <div class="header-subtitle">You roof can help the environment</div>
+        <div style="margin-left:auto;">
+        </div>
+      </div>
+    </header>
+    <div class="container">
+        <div class="start">
+            <div class="start-people">
+                <img src="images/people.png">
+            </div>
+            <div class="start-sun">
+                <img src="images/sun.png">
+            </div>
+            <div class="start-house">
+                <img src="images/house.png">
+            </div>
+            <div class="start-text">
+                <div class="start-text_title">Unlock the true potential of your roof.</div>
+                <div class="start-text_body">Find out how much solar energy you save by installing <span style="color:#f0a500; font-weight: 600;">solar panels</span> on your roof. Our software uses machine learning to calculate how significant of a differrence you can make using various factors such as the type of your roof and your location.</div>
+                
+            <a href="./App.html">
+            <div class="start-text_button ui orange large button">Try it Out!</div>
+            </a>
+            </div>
+        </div>
     </div>
-    <div id="map"></div>
-    <script src="./index.js"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhFGvR9_eW2muXvvJvUZ0wnCgT6kw6_1M&callback=initMap&sensor=false&libraries=places"
-      async
-      defer
-    ></script>
-    
-  </body>
+</body>
 </html>
