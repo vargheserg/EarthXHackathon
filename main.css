@@ -54,7 +54,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
 }
-.pac-container {
+.pac-container { 
     margin-left: 0px;
 }
 .pac-container::after {
