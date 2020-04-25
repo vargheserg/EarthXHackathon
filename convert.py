@@ -18,20 +18,20 @@ def getOverpass(osm):
     print(response.text)
     return json.loads(response.text)
 
-def getGeoJSON(overpass):
-    geojson = ***REMOVED***
-        "type": "FeatureCollection",
-        "features": [
-        ***REMOVED***
-            "type": "Feature",
-            "geometry" : ***REMOVED***
-                "type": "Point",
-                "coordinates": [d["lon"], d["lat"]],
-                ***REMOVED***,
-            "properties" : d,
-        ***REMOVED*** for d in overpass]
-    ***REMOVED***
-    return geojson
+# def getGeoJSON(overpass):
+#     geojson = ***REMOVED***
+#         "type": "FeatureCollection",
+#         "features": [
+#         ***REMOVED***
+#             "type": "Feature",
+#             "geometry" : ***REMOVED***
+#                 "type": "Point",
+#                 "coordinates": [d["lon"], d["lat"]],
+#                 ***REMOVED***,
+#             "properties" : d,
+#         ***REMOVED*** for d in overpass]
+#     ***REMOVED***
+#     return geojson
 
 # def convert_json(overpass):
 #     return json.dumps(***REMOVED*** "type": "FeatureCollection",
@@ -51,7 +51,7 @@ def getGeoJSON(overpass):
 
 
 def OSMtoGeoJSON(city):
-    geojson = getGeoJSON(getOverpass(getOSM(city)))
+    geojson = getOverpass(getOSM(city))
     #geojson = convert_json(getOverpass(getOSM(city)))
     print(geojson)
 
