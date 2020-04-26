@@ -1,8 +1,7 @@
 from flask import Flask, request, jsonify
-from roof-detector import get_map
-from roof-detector import rooftop_detection
+from .roof-detector import get_map
+from .roof-detector import rooftop_detection
 import os
-
 app = Flask(__name__)
 
 @app.route('/')
