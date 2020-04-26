@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from .roof-detector import get_map
-from .roof-detector import rooftop_detection
+from envohacks.roof-detector import get_map
+from envohacks.roof-detector import rooftop_detection
 import os
 app = Flask(__name__)
 
