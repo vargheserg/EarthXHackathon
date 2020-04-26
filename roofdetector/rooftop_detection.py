@@ -4,7 +4,7 @@ from roofdetector import get_map
 import numpy as np
 from google.cloud import automl_v1beta1
 from google.cloud.automl_v1beta1.proto import service_pb2
-
+import requests
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "google_creds.json"
 
 with open('keys.json', 'r') as f:
@@ -116,8 +116,13 @@ def draw_box(img, x1, y1, x2, y2):
   image = cv2.imdecode(image, cv2.IMREAD_COLOR)
 
   cv2.rectangle(image, start, end, 0, 4)
-  b64img = base64.b64encode(image)
-  return b64img
+  
+  b64img= cv2.imencode('.png', image)[1].tostring()
+  retval, buffer = cv2.imencode('.png', image)
+  png_as_text = base64.b64encode(buffer)
+  #response = requests.post(test_url, data=base64.b64encode(b64img), headers=headers)
+  #print(png_as_text)
+  return png_as_text
 
 def get_roof_data(latitude, longitude):
   zoom = 20
