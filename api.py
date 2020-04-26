@@ -18,7 +18,7 @@ def stuff():
     sol = float(request.args.get('solar'))
     response = rooftop_detection.get_roof_data(lat,lon)
     image = response['image']
-    response.pop('image', None)
+    #response.pop('image', None)
     coeffecient = {
       "prism": 0.75, 
       "flat": 1, 
