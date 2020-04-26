@@ -3,7 +3,7 @@ import requests, urllib, json
 with open('keys.json', 'r') as f:
     keys = json.load(f)
 
-maps_static_key = keys["keys/maps-static"]
+maps_static_key = keys["maps-static"]
 
 imagewidth = 400
 imageheight = 400
