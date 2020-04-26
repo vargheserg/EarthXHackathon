@@ -109,6 +109,13 @@ def get_roof_size(rType,x1,y1,x2,y2, latitude, zoom):
   
   return area
 
+def get_num_panels(area):
+  avgPanelW = 1.651
+  avgPanelL = 0.9906
+  avgPanelArea = avgPanelL*avgPanelW
+  threshold = 0.60
+  return ((area*threshold)/avgPanelArea)
+
 def draw_box(img, x1, y1, x2, y2):
   start = (int(x1),int(y1))
   end = (int(x2),int(y2))
@@ -130,11 +137,13 @@ def get_roof_data(latitude, longitude):
   zoom = 20
   image, name, score, x1, y1, x2, y2, endZoom = make_recursive_prediction(zoom, latitude, longitude)
   size = get_roof_size(name, x1,y1,x2,y2, latitude, endZoom)
+  panels = get_num_panels(size)
 
   output = "\n\nDetected roof at ({},{})\n\
 Type: {}\n\
 Confidence: {} %\n\
-Surface Area: {} Meters".format(str(latitude), str(longitude),name, int(score*100), str(int(size)))
+Surface Area: {} Meters\n\
+Space for: {} Solar Panels of Average Size".format(str(latitude), str(longitude),name, int(score*100), str(int(size), str(panels)))
   print(output)
   image = draw_box(image, x1, y1, x2, y2)
 
