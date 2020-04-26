@@ -1,2 +1,1 @@
-# EarthXHackothon
- Hackathon Repo
+# envohacks
