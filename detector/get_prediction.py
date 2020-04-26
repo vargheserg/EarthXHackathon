@@ -4,7 +4,7 @@ from google.cloud.automl_v1beta1.proto import service_pb2
 
 from detector import get_map as gm
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "keys/google_creds.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "google_creds.json"
 
 with open('keys.json', 'r') as f:
     keys = json.load(f)
