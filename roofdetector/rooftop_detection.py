@@ -97,28 +97,7 @@ def get_roof_size(rType,x1,y1,x2,y2, latitude, zoom):
   print (widthM, lengthM, 400*metersPerPx)
   angle = 30
   area = 0
-
-  if rType == "flat":
-    area = widthM*lengthM
-  elif rType == "pyramid":
-    height = widthM/2 * math.tan(math.radians(angle))
-    area = ((widthM*height)/2)*4
-  elif rType == "prism":
-    area = ((lengthM*widthM)/(2*math.cos(math.radians(angle))))*4
-  elif rType == "slantedprism":
-    wid = min(widthM, lengthM)
-    len = max(widthM, lengthM)
-    triangles = ((wid/(2*math.sin(math.radians(angle))))*wid)*2
-    rects = ((wid/(2*math.cos(math.radians(angle))))*len)*2
-    area = triangles + rects
-  elif rType == "complex": 
-    #same calc as slantedprism cuz most complex ones have this general shape
-    wid = min(widthM, lengthM)
-    len = max(widthM, lengthM)
-    triangles = ((wid/(2*math.sin(math.radians(angle))))*wid)*2
-    rects = ((wid/(2*math.cos(math.radians(angle))))*len)*2
-    area = triangles + rects
-  
+  area = widthM*lengthM  
   return area
 
 def draw_box(img, x1, y1, x2, y2):
