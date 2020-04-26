@@ -82,11 +82,11 @@ def make_recursive_prediction(zoom, latitude, longitude):
 def get_roof_size(rType,x1,y1,x2,y2, latitude, zoom):
   print("zoom",zoom)
   if zoom == 21: 
-    metersPerPx = 2/44
+    metersPerPx = 2/48
   elif zoom == 20: 
-    metersPerPx = 5/55
+    metersPerPx = 5/59
   elif zoom == 19: 
-    metersPerPx = 10/55
+    metersPerPx = 10/59
   else: 
     metersPerPx = (156543.03392 * math.cos(latitude * math.pi / 180) / math.pow(2, zoom))/234
   
