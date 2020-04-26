@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from roof-detector.get_map import get_map_img
-from roof-detector.rooftop_detection import get_map_img
+import roof-detector.get_map
+import roof-detector.rooftop_detection
 import os
 
 app = Flask(__name__)
@@ -10,13 +10,13 @@ def home():
     return '<h1>Deployed to Wherever! </h1>'
     #Environment variables: os.environ['varName']
 
-@app.route('/process', methods=['GET'])
+@app.route('/', methods=['GET'])
 def stuff():
     lat = request.args.get('lat')
     lon = request.args.get('lon')
-    image = get_map_img(lat,lon)
+    image = get_map.get_map_img(lat,lon)
     if image != 0:
-        prediction = get_prediction(img, ml_project_id, ml_model_id)
+        prediction = rooftop_detection.get_prediction(img, ml_project_id, ml_model_id)
         roofCategory = prediction.payload[0].display_name
         confidence = prediction.payload[0].image_object_detection.score
         print(roofCategory)
