@@ -36,7 +36,7 @@ var houseImage;
 function getEnergyConsumptionPerMetersSquared(area) {
   for (let i = 0; i < eCArea.length; i++) {
     if (area <= eCArea[i]) {
-      return ec[i];
+      return eC[i];
     }
   }
   return largestEC;
