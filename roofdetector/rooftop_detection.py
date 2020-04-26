@@ -35,7 +35,7 @@ def make_recursive_prediction(zoom, latitude, longitude):
   # Gets image of map from lat and long
   img = get_map.get_map_img(zoom, latitude, longitude)
 
-  if (zoom > 0):
+  if (zoom > 18):
     # Try running the following code without errors
     try:
       # make a prediction on the image
@@ -80,9 +80,21 @@ def make_recursive_prediction(zoom, latitude, longitude):
   else: return 0
 
 def get_roof_size(rType,x1,y1,x2,y2, latitude, zoom):
-  metersPerPx = 156543.03392 * math.cos(latitude * math.pi / 180) / math.pow(2, zoom)
+  print("zoom",zoom)
+  if zoom == 21: 
+    metersPerPx = 2/44
+  elif zoom == 20: 
+    metersPerPx = 5/55
+  elif zoom == 19: 
+    metersPerPx = 10/55
+  else: 
+    metersPerPx = (156543.03392 * math.cos(latitude * math.pi / 180) / math.pow(2, zoom))/234
+  
+  #metersPerPx = (156543.03392 * math.cos(latitude * math.pi / 180) / math.pow(2, zoom))
+
   widthM = (x2-x1)*metersPerPx
   lengthM = (y2-y1)*metersPerPx
+  print (widthM, lengthM, 400*metersPerPx)
   angle = 30
   area = 0
 
@@ -109,13 +121,6 @@ def get_roof_size(rType,x1,y1,x2,y2, latitude, zoom):
   
   return area
 
-def get_num_panels(area):
-  avgPanelW = 1.651
-  avgPanelL = 0.9906
-  avgPanelArea = avgPanelL*avgPanelW
-  threshold = 0.60
-  return ((area*threshold)/avgPanelArea)
-
 def draw_box(img, x1, y1, x2, y2):
   start = (int(x1),int(y1))
   end = (int(x2),int(y2))
@@ -137,7 +142,6 @@ def get_roof_data(latitude, longitude):
   zoom = 20
   image, name, score, x1, y1, x2, y2, endZoom = make_recursive_prediction(zoom, latitude, longitude)
   size = get_roof_size(name, x1,y1,x2,y2, latitude, endZoom)
-  panels = get_num_panels(size)
 
   output = "\n\nDetected roof at ({},{})\n\
 Type: {}\n\
