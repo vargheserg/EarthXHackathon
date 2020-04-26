@@ -2,6 +2,25 @@ var map;
 var cityName = document.getElementById("city-name");
 var addressInput = document.getElementById("address-input2");
 var legendIndicator = document.getElementById("legend-indicator");
+var results = document.getElementById("results");
+var boundingImage = document.getElementById("result-bounding-image");
+var streetImage = document.getElementById("result-street-image");
+
+// Data for calculations
+var solarPanelEffeciency = 0.175;
+// Meteres squared
+var eCArea = [55.74, 92.90, 139.35, 185.81, 232.26]; 
+// kWh/m^2
+var eC = [55.54, 54.57, 57.59, 49.62, 31.00];
+var largestEC = 37.67;
+// costs
+var ontarioCostPerkWh = 0.125;
+// Dimensions
+var solarPanelWidth = 1.651;
+
+
+
+
 
 // 92 data polygons
 // 2.84 - 3.5
@@ -9,6 +28,58 @@ var solarMin = 2.84,
   solarMax = 3.5;
 var baseFillOpacity = 0.7;
 var insideFillOpacity = 0.4;
+var buildingLatLng;
+var infoWindow;
+var currentSolar;
+var houseImage;
+
+function getEnergyConsumptionPerMetersSquared(area) {
+  for (let i = 0; i < eCArea.length; i++) {
+    if (area <= eCArea[i]) {
+      return ec[i];
+    }
+  }
+  return largestEC;
+}
+
+function yesClick() {
+  axios.get('https://damp-bayou-43879.herokuapp.com/process', {
+    params: {
+      lat: buildingLatLng.lat(),
+      lon: buildingLatLng.lng(),
+      solar: currentSolar
+    }
+  })
+  .then(res => {
+    data = res.data;
+    console.log(data);
+    // per month
+    let kwhmsquared = getEnergyConsumptionPerMetersSquared(data.size);
+    console.log("Total Monthly Energy Consumption (kWh/m^2): " + kwhmsquared);
+    console.log("Total Monthly Energy Costs (kW): " + kwhmsquared * data.size * ontarioCostPerkWh)
+    console.log("Total Yearly Energy Consts (kW): " + kwhmsquared * data.size * ontarioCostPerkWh * 12);
+
+    infoWindow.close();
+    boundingImage.setAttribute(
+      'src', `data:image/png;base64,${res.data.image}`
+    );
+    streetImage.setAttribute(
+      'src', `https://maps.googleapis.com/maps/api/streetview?size=600x450&location=${buildingLatLng.lat()},${buildingLatLng.lng()}&fov=100&pitch=0&key=AIzaSyBhFGvR9_eW2muXvvJvUZ0wnCgT6kw6_1M`
+    )
+    results.style.display = "flex";
+    results.scrollIntoView({ behavior: "smooth" });
+    
+   
+
+  })
+  .catch(err => {
+    console.error(err);
+  });
+}
+
+function noClick() {
+  infoWindow.close();
+}
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -18,8 +89,9 @@ function initMap() {
     mapTypeControl: false,
     streetViewControl: false,
     fullscreenControl: false,
+    scaleControl: true
   });
-  var infoWindow = new google.maps.InfoWindow({
+  infoWindow = new google.maps.InfoWindow({
     content: "",
   });
 
@@ -88,6 +160,7 @@ function initMap() {
   // Zoom change
   google.maps.event.addDomListener(map, "zoom_changed", () => {
     let zoomLevel = map.getZoom();
+    console.log(zoomLevel);
     // Making area more visible
     if (zoomLevel >= 15 && zoomLevel < 17) {
       map.data.forEach((feature) => {
@@ -114,21 +187,25 @@ function initMap() {
     infoWindow.close();
 
     let latLng = e.latLng;
-    let houseImage = `https://maps.googleapis.com/maps/api/streetview?size=600x350&location=${latLng.lat()},${latLng.lng()}&fov=100&pitch=0&key=AIzaSyBhFGvR9_eW2muXvvJvUZ0wnCgT6kw6_1M`;
+    buildingLatLng = latLng;
+    currentSolar = e.feature.getProperty("solar");
+    houseImage = `https://maps.googleapis.com/maps/api/streetview?size=600x350&location=${latLng.lat()},${latLng.lng()}&fov=100&pitch=0&key=AIzaSyBhFGvR9_eW2muXvvJvUZ0wnCgT6kw6_1M`;
 
     infoWindow = new google.maps.InfoWindow({ position: latLng });
     infoWindow.setContent(`
         <div id="info-window">
             <div id="info-header"> 
                 <p id="info-header-text">Is this the building?</p>
-                <button class="ui primary button">Yes</button>
-                <button class="ui secondary button">No</button>
+                <button onclick="yesClick()" class="ui primary button">Yes</button>
+                <button onclick="noClick()" class="ui secondary button">No</button>
             </div>
             <img src= "${houseImage}">
         </div>
       `);
     infoWindow.open(map);
   });
+
+  
   // Changes text when mouse enters and leaves a city
   map.data.addListener("mouseover", (e) => {
     cityName.innerHTML = e.feature.getProperty("name");
@@ -144,3 +221,4 @@ function initMap() {
     cityName.style.opacity = 1;
   });
 }
+

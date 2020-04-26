@@ -16,15 +16,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap" rel="stylesheet">
   </head>
   <body class="body">
-    <header class="header">
-      <div class="container">
+    <header class="header" style="position: relative;">
+      <div class="container" style="height: 100%;">
         <div class="header-title">
           <i class="sun outline icon"></i>Bright Light
         </div>
         <div class="header-subtitle">You roof can help the environment</div>
       </div>
     </header>
-    <div class="container" style="padding-top:60px;">
+    <div class="container" style="padding-top:10px;">
       <div class="dashboard">
         <div class="dashboard-map">
           <div class="map">
@@ -57,7 +57,14 @@
 							<div id="city-name">Pick your House</div>
         </div>
       </div>
-      
+    </div>
+    <div id="results">
+      <div id="result-bounding">
+        <img id="result-bounding-image" alt="Bounding Box Of Building"  width="95%">
+      </div>
+      <div id="result-street">
+        <img id="result-street-image" alt="Street View Image of Building" width="95%">
+      </div>
     </div>
    
     <script src="./index.js"></script>
@@ -66,7 +73,7 @@
       async
       defer
     ></script> 
-   
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     
   </body>
 </html>

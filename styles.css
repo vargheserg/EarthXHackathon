@@ -6,7 +6,7 @@
 }
 
 body {
-	overflow-y: none;
+
 }
 
 body::-webkit-scrollbar-track {
@@ -111,6 +111,7 @@ body::-webkit-scrollbar-thumb {
 	height: 90vh;
 	display: flex;
 	flex-direction: column;
+	z-index: 1;
 }
 #legend-block {
   display: flex;
@@ -318,6 +319,35 @@ body::-webkit-scrollbar-thumb {
 	font-family: 'Raleway';
 	text-transform: uppercase;
 	font-size: 40px;
+}
+
+#results {
+	height: 200vh;
+	width: 100%;
+	display: none;
+	flex-direction: row;
+	flex-wrap: wrap;
+	background-color: red;
+}
+
+#result-bounding {
+	width: 50%;
+	min-width: 500px;
+	height: 50%;
+	background-color: rgb(238, 238, 238);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#result-street {
+	width: 50%;
+	min-width: 500px;
+	height: 50%;
+	background-color: rgb(230, 230, 230);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @media (max-width: 800px) {
