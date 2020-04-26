@@ -15,6 +15,7 @@ def home():
 def stuff():
     lat = float(request.args.get('lat'))
     lon = float(request.args.get('lon'))
+    sol = float(request.args.get('solar'))
     response = rooftop_detection.get_roof_data(lat,lon)
     image = response['image']
     response.pop('image', None)
@@ -25,7 +26,7 @@ def stuff():
       "pyramid": 0.5, 
       "complex": 0.4
     }
-    response["adjusted"]=coeffecient[response["name"]]
+    response["adjusted"]=coeffecient[response["name"]] * sol
     return jsonify(response)
     
 
