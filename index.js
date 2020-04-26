@@ -5,6 +5,7 @@ var legendIndicator = document.getElementById("legend-indicator");
 var results = document.getElementById("results");
 var boundingImage = document.getElementById("result-bounding-image");
 var streetImage = document.getElementById("result-street-image");
+var costYearlySavingsChart;
 
 var costYearlySavings = document.getElementById('chart-cost-yearly-vs-savings-yearly').getContext('2d');
 
@@ -74,24 +75,32 @@ function yesClick() {
     document.getElementById("savings").innerHTML = `${Math.trunc(yearlySavingsAfterSP*25)}`;
     document.getElementById("consumption").innerHTML = `${Math.trunc(kWh)}`;
 
-    var costYearlySavingsChart = new Chart(costYearlySavings, {
-      type: 'doughnut',
-      data: {
-        labels: ["Yearly Energy Cost (CAD)", "Yearly Energy Savings (CAD)"],
-        datasets: [{
-          label: "Yearly Energy Costs Vs Savings",
-          data: [Math.trunc(yearlyCosts), Math.trunc(yearlySavingsAfterSP)],
-          backgroundColor: [
-            'rgba(39,117,242, 0.75)',
-            'rgba(242,215,39, 0.75)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-
-      }
-    })
+    if (costYearlySavingsChart == null) {
+      costYearlySavingsChart = new Chart(costYearlySavings, {
+        type: 'doughnut',
+        data: {
+          labels: ["Yearly Energy Cost (CAD)", "Yearly Energy Savings (CAD)"],
+          datasets: [{
+            label: "Yearly Energy Costs Vs Savings",
+            data: [Math.trunc(yearlyCosts), Math.trunc(yearlySavingsAfterSP)],
+            backgroundColor: [
+              'rgba(39,117,242, 0.75)',
+              'rgba(242,215,39, 0.75)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+  
+        }
+      });
+    } else {
+      costYearlySavingsChart.data.datasets.forEach((dataset, i) => {
+        dataset.data = [Math.trunc(yearlyCosts), Math.trunc(yearlySavingsAfterSP)];
+      });
+      costYearlySavingsChart.update();
+    }
+    
 
     infoWindow.close();
     boundingImage.style.display = "inline";
