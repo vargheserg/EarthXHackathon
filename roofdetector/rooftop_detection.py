@@ -1,5 +1,5 @@
 #opencv-python-4.2.0.34
-import sys, os, json, math, cv2
+import sys, os, json, math, cv2, base64
 from roofdetector import get_map
 import numpy as np
 from google.cloud import automl_v1beta1
@@ -116,10 +116,8 @@ def draw_box(img, x1, y1, x2, y2):
   image = cv2.imdecode(image, cv2.IMREAD_COLOR)
 
   cv2.rectangle(image, start, end, 0, 4)
-  cv2.imwrite("my.png",image)
-
-  #cv2.imshow("lalala", image)
-  #q = cv2.waitKey(0)
+  b64img = base64.b64encode(image)
+  return b64img
 
 def get_roof_data(latitude, longitude):
   zoom = 20
@@ -131,7 +129,9 @@ Type: {}\n\
 Confidence: {} %\n\
 Surface Area: {} Meters".format(str(latitude), str(longitude),name, int(score*100), str(int(size)))
   print(output)
-  draw_box(image, x1, y1, x2, y2)
+  image = draw_box(image, x1, y1, x2, y2)
+
+
   response = {}
   response['image']=image
   response['name']=name
