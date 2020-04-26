@@ -60,9 +60,11 @@ function yesClick() {
     console.log("Total Yearly Energy Consts (kW): " + kwhmsquared * data.size * ontarioCostPerkWh * 12);
 
     infoWindow.close();
+    boundingImage.style.display = "inline";
     boundingImage.setAttribute(
       'src', `data:image/png;base64,${res.data.image}`
     );
+    streetImage.style.display = "inline";
     streetImage.setAttribute(
       'src', `https://maps.googleapis.com/maps/api/streetview?size=600x450&location=${buildingLatLng.lat()},${buildingLatLng.lng()}&fov=100&pitch=0&key=AIzaSyBhFGvR9_eW2muXvvJvUZ0wnCgT6kw6_1M`
     )
