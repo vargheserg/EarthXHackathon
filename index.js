@@ -59,7 +59,6 @@ function yesClick() {
   })
   .then(res => {
     data = res.data;
-    console.log(data);
     // per month
     let kWhmSquared = getEnergyConsumptionPerMetersSquared(data.size);
     let kWh = kWhmSquared * data.size;
@@ -70,16 +69,9 @@ function yesClick() {
     let yearlyEnergyProduced = monthlyEnergyProduced * 12;
     let monthlySavingsAfterSP = monthlyEnergyProduced * ontarioCostPerkWh;
     let yearlySavingsAfterSP = monthlySavingsAfterSP * 12;
-    console.log("Total Monthly Energy Consumption (kWh/m^2): " + kWh);
-    console.log("Total Monthly Energy Costs (kW): $" + monthlyCosts)
-    console.log("Total Yearly Energy Costs (kW): $" + yearlyCosts);
-    console.log("Amount of Solar Panels: " + sPAmount);
-    console.log("Monthly Energy Produced (kW): " + monthlyEnergyProduced);
-    console.log("Yearly Energy Produced (kW): " + yearlyEnergyProduced);
-    console.log("Monthly Savings After SP: $" + monthlySavingsAfterSP);
-    console.log("Yearly Savings After SP: $" + yearlySavingsAfterSP);
+    
     document.getElementById("energy-produced").innerHTML = `${Math.trunc(monthlyEnergyProduced)}`;
-    document.getElementById("savings").innerHTML = `$${Math.trunc(yearlySavingsAfterSP*25)}`;
+    document.getElementById("savings").innerHTML = `${Math.trunc(yearlySavingsAfterSP*25)}`;
     document.getElementById("consumption").innerHTML = `${Math.trunc(kWh)}`;
 
     var costYearlySavingsChart = new Chart(costYearlySavings, {
@@ -205,7 +197,6 @@ function initMap() {
   // Zoom change
   google.maps.event.addDomListener(map, "zoom_changed", () => {
     let zoomLevel = map.getZoom();
-    console.log(zoomLevel);
     // Making area more visible
     if (zoomLevel >= 15 && zoomLevel < 17) {
       map.data.forEach((feature) => {
