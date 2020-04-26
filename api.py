@@ -17,7 +17,7 @@ def stuff():
     lon = float(request.args.get('lon'))
     response = rooftop_detection.get_roof_data(lat,lon)
     image = response['image']
-    response.pop('image', None)
+    #response.pop('image', None)
     return jsonify(response)
 
 if __name__ == "__main__":
