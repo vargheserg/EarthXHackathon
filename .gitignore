@@ -2,3 +2,4 @@
 venv
 *\google_creds.json
 *\keys.json
+solargeo.json
