@@ -1,3 +1,5 @@
 .vscode
 venv
 solargeo.json
+google_creds.json
+keys.json
