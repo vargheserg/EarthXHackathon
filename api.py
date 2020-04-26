@@ -14,8 +14,8 @@ def home():
 
 @app.route('/process', methods=['GET'])
 def stuff():
-    lat = request.args.get('lat')
-    lon = request.args.get('lon')
+    lat = float(request.args.get('lat'))
+    lon = float(request.args.get('lon'))
     response = rooftop_detection.get_roof_data(lat,lon)
     image = response['image']
     response.pop('image', None)

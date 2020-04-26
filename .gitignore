@@ -1,6 +1,4 @@
 .vscode
 venv
 solargeo.json
-google_creds.json
-keys.json
 bfg-1.13.0.jar
