@@ -16,23 +16,14 @@ def home():
 def stuff():
     lat = request.args.get('lat')
     lon = request.args.get('lon')
-    #image = get_map.get_map_img(lat,lon)
-    response = rooftop_detection.get_roof_type(lat,lon)
+    response = rooftop_detection.get_roof_data(lat,lon)
+    image = response['image']
+    response.pop('image', None)
     return jsonify(response)
-    # if image != 0:
-    #     prediction = rooftop_detection.get_prediction(img, ml_project_id, ml_model_id)
-    #     roofCategory = prediction.payload[0].display_name
-    #     confidence = prediction.payload[0].image_object_detection.score
-    #     print(roofCategory)
-    #     print(confidence)
-    #     #return JSON
-    #     return jsonify(
-    #     category=roofCategory,
-    #     confidence=confidence,
-    # )
 
 if __name__ == "__main__":
   app.run()
+
 # Sample request
 # {
 #     "methods": "GET",

@@ -1,6 +1,6 @@
 #opencv-python-4.2.0.34
 import sys, os, json, math, cv2
-import get_map
+from roofdetector import get_map
 import numpy as np
 from google.cloud import automl_v1beta1
 from google.cloud.automl_v1beta1.proto import service_pb2
@@ -131,9 +131,13 @@ Type: {}\n\
 Confidence: {} %\n\
 Surface Area: {} Meters".format(str(latitude), str(longitude),name, int(score*100), str(int(size)))
   print(output)
-
   draw_box(image, x1, y1, x2, y2)
-  
+  response = {}
+  response['image']=image
+  response['name']=name
+  response['score']=score
+  response['size']=size
+  return response
 
 if __name__ == "__main__":
   lat = 43.521740
