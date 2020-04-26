@@ -21,14 +21,26 @@ def get_prediction(content, project_id, model_id):
   request = prediction_client.predict(name, payload, params)
   return request  # waits till request is returned
 
+def make_recursive_prediction(zoom, latitude, longitude):
+  img = get_map.get_map_img(zoom, latitude, longitude)
+  if (zoom > 0):
+    try:
+      prediction = get_prediction(img, ml_project_id, ml_model_id)
+      name = prediction.payload[0].display_name
+      score = prediction.payload[0].image_object_detection.score
+      print (name, score, zoom)
+      return name, score, zoom
+    except (IndexError, KeyError, TypeError):
+      zoom -= 1
+      newName, newScore, newZoom = make_recursive_prediction(zoom, latitude, longitude)
+      return newName, newScore, newZoom
+  else: return 0
+
 
 def get_roof_type(latitude, longitude):
-  img = get_map.get_map_img(latitude, longitude)
-  if (img != 0):
-    prediction = get_prediction(img, ml_project_id, ml_model_id)
-    print (prediction.payload[0].display_name)
-    print (prediction.payload[0].image_object_detection.score)
-    return prediction.payload[0].display_name
+  zoom = 21
+  name, score, finalZoom = make_recursive_prediction(zoom, latitude, longitude)
+  print(finalZoom)
 
 lat = 43.521740
 longi = -79.847493
