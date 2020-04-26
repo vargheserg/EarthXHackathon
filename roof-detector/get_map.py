@@ -5,12 +5,12 @@ with open('keys.json', 'r') as f:
 
 maps_static_key = keys["maps-static"]
 
-def get_map_img(latitude, longitude):
+def get_map_img(zoom, latitude, longitude):
    url = "https://maps.googleapis.com/maps/api/staticmap?"
    center = str(latitude) + "," + str(longitude)
 
    urlparams = urllib.parse.urlencode(***REMOVED***'center': center,
-                                          'zoom': '21',
+                                          'zoom': str(zoom),
                                           'size': '400x400',
                                           'maptype': 'satellite',
                                           'sensor': 'false',
