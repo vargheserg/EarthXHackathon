@@ -116,6 +116,8 @@ def draw_box(img, x1, y1, x2, y2):
   image = cv2.imdecode(image, cv2.IMREAD_COLOR)
 
   cv2.rectangle(image, start, end, 0, 4)
+  #cv2.imshow("lalala", image)
+  #k = cv2.waitKey(0)
   b64img = base64.b64encode(image)
   return b64img
 
@@ -140,7 +142,7 @@ Surface Area: {} Meters".format(str(latitude), str(longitude),name, int(score*10
   return response
 
 if __name__ == "__main__":
-  lat = 43.521740
-  longi = -79.847493
+  lat = 43.73212274448905
+  longi = -79.61853123719736
 
   get_roof_data(lat, longi)
