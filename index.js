@@ -59,9 +59,6 @@ function initMap() {
   map.data.loadGeoJson("test.json");
   // Set style based on each feature (city)
   map.data.setStyle((feature) => {
-	if (feature.getProperty("solar") > 3.3) {
-		console.log(feature.getProperty("name") + "'s SV: " + feature.getProperty("solar"));
-	}
     // 1.98 - 5.96
     // 54°, 40%, 100%-> 54°, 90%, 100%
     var low = [61, 73, 65]; // Smallest color
