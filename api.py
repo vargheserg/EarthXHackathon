@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from roofdetector import rooftop_detection as rooftop_detection
+from detector import rooftop_detection as rd
 from flask_cors import CORS
 
 import os
@@ -16,7 +16,7 @@ def stuff():
     lat = float(request.args.get('lat'))
     lon = float(request.args.get('lon'))
     sol = float(request.args.get('solar'))
-    response = rooftop_detection.get_roof_data(lat,lon)
+    response = rd.get_roof_data(lat,lon)
     image = response['image']
     #response.pop('image', None)
     coeffecient = {
