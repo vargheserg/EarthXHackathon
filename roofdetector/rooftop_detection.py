@@ -15,9 +15,9 @@ ml_model_id = keys["ml-model-id"]
 def get_prediction(content, project_id, model_id):
   prediction_client = automl_v1beta1.PredictionServiceClient()
 
-  name = 'projects/***REMOVED******REMOVED***/locations/us-central1/models/***REMOVED******REMOVED***'.format(project_id, model_id)
-  payload = ***REMOVED***'image': ***REMOVED***'image_bytes': content ***REMOVED******REMOVED***
-  params = ***REMOVED******REMOVED***
+  name = 'projects/{}/locations/us-central1/models/{}'.format(project_id, model_id)
+  payload = {'image': {'image_bytes': content }}
+  params = {}
   request = prediction_client.predict(name, payload, params)
   return request  # waits till request is returned
 
@@ -40,7 +40,10 @@ def make_recursive_prediction(zoom, latitude, longitude):
 def get_roof_type(latitude, longitude):
   zoom = 21
   name, score, finalZoom = make_recursive_prediction(zoom, latitude, longitude)
-  print(finalZoom)
+  response = {}
+  response["name"]=name
+  response["score"]=score
+  return response
 
 lat = 43.521740
 longi = -79.847493

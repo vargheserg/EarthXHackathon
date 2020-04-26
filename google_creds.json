@@ -1,12 +1,12 @@
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+{
+  "type": "service_account",
+  "project_id": "earthxhacks-275216",
+  "private_key_id": "2157125091fff672303d059ce41272f375552098",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCoW0vYxB3Ibn2M\n54//ITq3q0wpakhhT486c4F6pa1/l2T/4vXVLOXvtPbi+KxIRNFScZOVi9kOTXgV\nb7prJZgVe+im80s1GUBNQUTRndSYsDoqfVc45FvWen5DFn+yN4dNKZ9xKGW3gtgU\neDK1KjU1LThqocaBGXC3qsDTX+odMYLM14RBG5xDELPIorX75cpNpUC2EwAjn65f\nZxCm8y7swCHjjT3O3HBq6Wwfo7pz4y26oRmPgx3fDzrihgntWh5zQOv4dPerxmGz\nSCALRgHj0DnOBag82mmOJZQOG3z8u1g606t6e9y/mS0xOp6+tbpkY8neuJJEHN7a\n8GX8D0FLAgMBAAECggEAEG81FLh0RdQPWnliU5/tSO+mVCalYSZwj16mJZBVwu5G\n9Dm2ELS8z20FarumqblaC6e9pewMaLqEPed1ta7qTTKWz/FRBqJr5f64lpPHJI6T\nZwFsScf09RdpCuh/16hXA1/MSjIM1+Ckcj8XiBrSLdo3tyUKqSCQIcW/5AJpaqb5\nkxXrtCFJsr8BrORJQknLsN6ehF562lE4Svh4sa9kpMrn0T3JJpNFw/nkHHDFUPZ/\nV0cL0VRErPzGmKa5yXQ7SAm/FdSBiCmUXdUV1aCEyCFCquesLtDbhEGv6q1s3PS3\nYU0vz/wVBKWTfg+wewoxdCxx5RYvM/Yust7VbX0I7QKBgQDX78ZIttIBM6FDgspB\n4PaM34ytlDTyBHgJvT+b2QhAiIuPqMU9Tq26kDd1hZnagAaUApRiSOL2teBfC4ho\nsenDJBN5wEAO9I3xLOAlqA24ZFEtELbZ8CcIiE6077PeMLL4x54J9Q0xN8x/4g3s\nCAHWtSc9Lhzfi29lgkDg1y4SdwKBgQDHl6PwNW9JjA5IpDQ0DqXFqBszRntZBOG2\nHNTbf4spIH83SchySmyuUkaOztLsTt1eXWD3C7gaJUNxhW0OSZ+qbe2tI7cLn2L+\nuV41JFx3AoaZztdQz6FWsbfkfHzjEYREjw7FbarQPFOGKyIcvvV+ylnl9qcCzoz+\nskeB7g9IzQKBgQC+2/nAb4by9PWGvGWVEQgav8SR77tUZsrKoPFGCPCYSZhBZATi\nCVbY3XuHbozsadhmnlkU/iNNuLgWihUJpKdfidWE+X4lOdbz4pxD7GQkJNbzJCDa\nRL/bdM9Mccnji9vEtHtlhakhZZZlOiLgCrvFUNzb4JQ4qf/OEvDRSqA4RQKBgDZn\nl0A60ILzslEKsVAfTgB6ui9X3vd85SmG4l6SfZRQT1z6t7CvqMA7nRAAQG45cQ3v\n1iaBA0XdMm0XOYrTdro2DLtNKO/6GjnkvVEvACVQgvAZ+YcFkazX9JBLfp9Gfw9R\nD22xXwYz63B/AWVkh/ZvoeGVQiD5vGUQo30/LtthAoGAOSv1F/Tw5z4JqkV44O8u\nuY7wpBlPIKlFUcZ8tM5oeaqJkBZlbEoD2phjpVClFGz/78W7cohBtNDRzttcBplk\nNvtf+IDvVV77Ik1ojaaKhg+eBdXcDV6GNvT7Cv2EX27Qb8QRh3yWm2bsOlxEx0Qz\nWIPbD1TlPiRid6U3GFtJ6zY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "automl-python-user@earthxhacks-275216.iam.gserviceaccount.com",
+  "client_id": "113288746289004423224",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/automl-python-user%40earthxhacks-275216.iam.gserviceaccount.com"
+}

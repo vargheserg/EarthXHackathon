@@ -9,13 +9,13 @@ def get_map_img(zoom, latitude, longitude):
    url = "https://maps.googleapis.com/maps/api/staticmap?"
    center = str(latitude) + "," + str(longitude)
 
-   urlparams = urllib.parse.urlencode(***REMOVED***'center': center,
+   urlparams = urllib.parse.urlencode({'center': center,
                                           'zoom': str(zoom),
                                           'size': '400x400',
                                           'maptype': 'satellite',
                                           'sensor': 'false',
                                           'scale': '2', 
-                                          'key': maps_static_key***REMOVED***)
+                                          'key': maps_static_key})
    print(url + urlparams)
    r = requests.get(url + urlparams)
 
