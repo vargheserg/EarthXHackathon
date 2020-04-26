@@ -59,6 +59,9 @@ function initMap() {
   map.data.loadGeoJson("test.json");
   // Set style based on each feature (city)
   map.data.setStyle((feature) => {
+	if (feature.getProperty("solar") > 3.3) {
+		console.log(feature.getProperty("name") + "'s SV: " + feature.getProperty("solar"));
+	}
     // 1.98 - 5.96
     // 54°, 40%, 100%-> 54°, 90%, 100%
     var low = [61, 73, 65]; // Smallest color
@@ -75,7 +78,6 @@ function initMap() {
       color[i] = (high[i] - low[i]) * delta + low[i];
     }
 
-    // console.log(feature.getProperty("name"));
 
     return {
       fillColor: "hsl(" + color[0] + "," + color[1] + "%," + color[2] + "%)",
@@ -116,8 +118,6 @@ function initMap() {
 
     let latLng = e.latLng;
     let houseImage = `https://maps.googleapis.com/maps/api/streetview?size=600x350&location=${latLng.lat()},${latLng.lng()}&fov=100&pitch=0&key=AIzaSyBhFGvR9_eW2muXvvJvUZ0wnCgT6kw6_1M`;
-    console.log(latLng.lat() + ": " + latLng.lng());
-    console.log(houseImage);
 
     infoWindow = new google.maps.InfoWindow({ position: latLng });
     infoWindow.setContent(`
@@ -130,16 +130,6 @@ function initMap() {
             <img src= "${houseImage}">
         </div>
       `);
-    // infoWindow.setContent(`
-    //   <div id="info-window">
-    //       <div id="info-header">
-    //           <p id="info-header-text">Is this the building?</p>
-    //           <button class="pure-material-button-contained info-header-button">Yes</button>
-    //           <button class="pure-material-button-contained info-header-button">No</button>
-    //       </div>
-    //       <img src= "${houseImage}">
-    //   </div>
-    // `);
     infoWindow.open(map);
   });
   // Changes text when mouse enters and leaves a city
