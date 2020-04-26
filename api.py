@@ -12,7 +12,7 @@ def home():
     return '<h1>Deployed to Wherever! </h1>'
     #Environment variables: os.environ['varName']
 
-@app.route('/', methods=['GET'])
+@app.route('/process', methods=['GET'])
 def stuff():
     lat = request.args.get('lat')
     lon = request.args.get('lon')
