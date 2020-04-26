@@ -2,3 +2,5 @@
 venv
 solargeo.json
 bfg-1.13.0.jar
+*\google_creds.json
+*\keys.json
