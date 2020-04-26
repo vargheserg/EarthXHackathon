@@ -6,8 +6,10 @@ var results = document.getElementById("results");
 var boundingImage = document.getElementById("result-bounding-image");
 var streetImage = document.getElementById("result-street-image");
 
+var costYearlySavings = document.getElementById('chart-cost-yearly-vs-savings-yearly').getContext('2d');
+
 // Data for calculations
-var solarPanelEffeciency = 0.175;
+var solarPanelEffeciency = 0.25;
 // Meteres squared
 var eCArea = [55.74, 92.90, 139.35, 185.81, 232.26]; 
 // kWh/m^2
@@ -16,8 +18,9 @@ var largestEC = 37.67;
 // costs
 var ontarioCostPerkWh = 0.125;
 // Dimensions
-var solarPanelWidth = 1.651;
-
+var sPWidth = 1.651+0.2;
+var sPHeight = 0.9906+0.2;
+var sPArea = sPWidth * sPHeight;
 
 
 
@@ -32,6 +35,10 @@ var buildingLatLng;
 var infoWindow;
 var currentSolar;
 var houseImage;
+
+function getAmountOfSolarPanels(area) {
+  return Math.ceil(area / sPArea);
+}
 
 function getEnergyConsumptionPerMetersSquared(area) {
   for (let i = 0; i < eCArea.length; i++) {
@@ -54,10 +61,43 @@ function yesClick() {
     data = res.data;
     console.log(data);
     // per month
-    let kwhmsquared = getEnergyConsumptionPerMetersSquared(data.size);
-    console.log("Total Monthly Energy Consumption (kWh/m^2): " + kwhmsquared);
-    console.log("Total Monthly Energy Costs (kW): " + kwhmsquared * data.size * ontarioCostPerkWh)
-    console.log("Total Yearly Energy Consts (kW): " + kwhmsquared * data.size * ontarioCostPerkWh * 12);
+    let kWhmSquared = getEnergyConsumptionPerMetersSquared(data.size);
+    let kWh = kWhmSquared * data.size;
+    let sPAmount = getAmountOfSolarPanels(data.size);
+    let monthlyCosts = kWh * ontarioCostPerkWh/2.3;
+    let yearlyCosts = monthlyCosts * 12;
+    let monthlyEnergyProduced = data.adjusted * sPAmount * solarPanelEffeciency * 30;
+    let yearlyEnergyProduced = monthlyEnergyProduced * 12;
+    let monthlySavingsAfterSP = monthlyEnergyProduced * ontarioCostPerkWh;
+    let yearlySavingsAfterSP = monthlySavingsAfterSP * 12;
+    console.log("Total Monthly Energy Consumption (kWh/m^2): " + kWh);
+    console.log("Total Monthly Energy Costs (kW): $" + monthlyCosts)
+    console.log("Total Yearly Energy Costs (kW): $" + yearlyCosts);
+    console.log("Amount of Solar Panels: " + sPAmount);
+    console.log("Monthly Energy Produced (kW): " + monthlyEnergyProduced);
+    console.log("Yearly Energy Produced (kW): " + yearlyEnergyProduced);
+    console.log("Monthly Savings After SP: $" + monthlySavingsAfterSP);
+    console.log("Yearly Savings After SP: $" + yearlySavingsAfterSP);
+    document.getElementById("energy-produced").innerHTML = `$${Math.trunc(monthlyEnergyProduced)}`;
+    document.getElementById("savings").innerHTML = `$${Math.trunc(yearlySavingsAfterSP*25)}`;
+    var costYearlySavingsChart = new Chart(costYearlySavings, {
+      type: 'doughnut',
+      data: {
+        labels: ["Yearly Energy Cost (CAD)", "Yearly Energy Savings (CAD)"],
+        datasets: [{
+          label: "Yearly Energy Costs Vs Savings",
+          data: [Math.trunc(yearlyCosts), Math.trunc(yearlySavingsAfterSP)],
+          backgroundColor: [
+            'rgba(39,117,242, 0.75)',
+            'rgba(242,215,39, 0.75)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+
+      }
+    })
 
     infoWindow.close();
     boundingImage.style.display = "inline";
@@ -91,7 +131,7 @@ function initMap() {
     mapTypeControl: false,
     streetViewControl: false,
     fullscreenControl: false,
-    scaleControl: true
+    rotateControl: false
   });
   map.setTilt(0);
   infoWindow = new google.maps.InfoWindow({

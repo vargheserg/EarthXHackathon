@@ -57,11 +57,36 @@
       </div>
     </div>
     <div id="results">
-      <div id="result-bounding">
-        <img style="display: none;" id="result-bounding-image" src="https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Bounding Box Of Building"  width="95%">
-      </div>
-      <div id="result-street">
-        <img style="display: none;" id="result-street-image" src="https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Street View Image of Building" width="95%">
+      <div id="result-image-div">
+        <div id="result-bounding">
+          <img style="display: none;" id="result-bounding-image" src="https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Bounding Box Of Building"  width="500px">
+        </div>
+        <div id="result-street">
+          <img style="display: none;" id="result-street-image" src="https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Street View Image of Building" width="500px">
+        </div>
+      </div>   
+      <div id="results-text">
+        <div id="charts">
+          <canvas width="300px" height="300px" id="chart-cost-yearly-vs-savings-yearly"></canvas>
+        </div>
+        <div id="data">
+          <div class="data-entry">
+            <div class="data-entry-title">
+              Monthly energy produced (kWH)
+            </div>
+            <div id="energy-produced" class="data-entry-value">
+              2020
+            </div>
+          </div>
+          <div class="data-entry">
+            <div class="data-entry-title">
+              Savings after 25 years
+            </div>
+            <div id="savings" class="data-entry-value">
+              2020
+            </div>
+          </div>
+        </div>
       </div>
     </div>
    
@@ -72,6 +97,6 @@
       defer
     ></script> 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
   </body>
 </html>
