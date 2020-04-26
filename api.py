@@ -18,6 +18,14 @@ def stuff():
     response = rooftop_detection.get_roof_data(lat,lon)
     image = response['image']
     response.pop('image', None)
+    coeffecient = {
+      "prism": 0.75, 
+      "flat": 1, 
+      "slantedprism": 0.6, 
+      "pyramid": 0.5, 
+      "complex": 0.4
+    }
+    response["adjusted"]=coeffecient["name"]
     return jsonify(response)
     
 
