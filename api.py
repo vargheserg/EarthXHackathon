@@ -10,7 +10,7 @@ def home():
     return '<h1>Deployed to Wherever! </h1>'
     #Environment variables: os.environ['varName']
 
-@app.route('/', methods=['GET'])
+@app.route('/process', methods=['GET'])
 def stuff():
     lat = request.args.get('lat')
     lon = request.args.get('lon')
@@ -39,5 +39,7 @@ def stuff():
 # Sample response
 # ***REMOVED***
 #     "category": "slantedprism",
-#     "confidence": "0.7",
+#     "image": image,
+#      "calculatedArea":"something something m^2",
+#      "powerRating":"something something kWh/ m^2",
 # ***REMOVED***
