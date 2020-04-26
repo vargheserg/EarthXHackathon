@@ -93,6 +93,7 @@ function initMap() {
     fullscreenControl: false,
     scaleControl: true
   });
+  map.setTilt(0);
   infoWindow = new google.maps.InfoWindow({
     content: "",
   });
