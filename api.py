@@ -25,7 +25,7 @@ def stuff():
       "pyramid": 0.5, 
       "complex": 0.4
     }
-    response["adjusted"]=coeffecient["name"]
+    response["adjusted"]=coeffecient[response["name"]]
     return jsonify(response)
     
 
