@@ -26,6 +26,8 @@ def stuff():
         confidence=confidence,
     )
 
+if __name__ == "__main__":
+  app.run()
 # Sample request
 # ***REMOVED***
 #     "methods": "GET",

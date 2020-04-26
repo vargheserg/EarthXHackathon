@@ -1,5 +1,5 @@
 import sys, os, json
-import get_map
+from . import get_map
 from google.cloud import automl_v1beta1
 from google.cloud.automl_v1beta1.proto import service_pb2
 
