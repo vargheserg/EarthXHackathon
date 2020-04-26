@@ -79,7 +79,9 @@ function yesClick() {
     console.log("Monthly Savings After SP: $" + monthlySavingsAfterSP);
     console.log("Yearly Savings After SP: $" + yearlySavingsAfterSP);
     document.getElementById("energy-produced").innerHTML = `${Math.trunc(monthlyEnergyProduced)}`;
-    document.getElementById("savings").innerHTML = `${Math.trunc(yearlySavingsAfterSP*25)}`;
+    document.getElementById("savings").innerHTML = `$${Math.trunc(yearlySavingsAfterSP*25)}`;
+    document.getElementById("consumption").innerHTML = `${Math.trunc(kWh)}`;
+
     var costYearlySavingsChart = new Chart(costYearlySavings, {
       type: 'doughnut',
       data: {
