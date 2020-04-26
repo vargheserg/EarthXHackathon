@@ -133,6 +133,7 @@ Surface Area: {} Meters".format(str(latitude), str(longitude),name, int(score*10
   print(output)
   draw_box(image, x1, y1, x2, y2)
   response = {}
+  response['image']=image
   response['name']=name
   response['score']=score
   response['size']=size
