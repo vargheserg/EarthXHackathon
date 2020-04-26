@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-from roofdetector import get_map as get_map
 from roofdetector import rooftop_detection as rooftop_detection
 from flask_cors import CORS
 
