@@ -3,18 +3,22 @@ import requests, urllib, json
 with open('keys.json', 'r') as f:
     keys = json.load(f)
 
-maps_static_key = keys["maps-static"]
+maps_static_key = keys["keys/maps-static"]
 
-def get_map_img(zoom, latitude, longitude):
+imagewidth = 400
+imageheight = 400
+scale = 2
+
+def get_map(zoom, latitude, longitude):
    url = "https://maps.googleapis.com/maps/api/staticmap?"
    center = str(latitude) + "," + str(longitude)
 
    urlparams = urllib.parse.urlencode({'center': center,
                                           'zoom': str(zoom),
-                                          'size': '400x400',
+                                          'size': str(imagewidth) + 'x' + str(imageheight),
                                           'maptype': 'satellite',
                                           'sensor': 'false',
-                                          'scale': '2', 
+                                          'scale': str(scale), 
                                           'key': maps_static_key})
    print(url + urlparams)
    r = requests.get(url + urlparams)
