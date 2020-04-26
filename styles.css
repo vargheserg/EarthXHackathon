@@ -331,11 +331,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 #result-image-div {
-	width: 100%;
-	height: 35%;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+  width: 100%;
+  height: 35%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 #results-text {
   height: 65%;
@@ -346,6 +346,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 #result-bounding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50%;
   min-width: 500px;
   background-color: rgb(238, 238, 238);
@@ -354,53 +357,56 @@ body::-webkit-scrollbar-thumb {
 #result-street {
   width: 50%;
   min-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgb(230, 230, 230);
 }
 
 #charts {
-	display: flex;
-	flex-direction: column;
-	width: 50%;
-	height: 100%;
-	justify-content: space-evenly;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 #data {
-	padding-top: 25px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	align-items: center;
-	flex-wrap: wrap;
-	width: 50%;
-	height: 100%;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 50%;
+  height: 100%;
 }
 
 .data-entry {
-	width: 100%;
-	height: 150px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .data-entry-title {
-	font-family: "Roboto", sans-serif;
-	font-weight: 400;
-	font-size: 50px;
-	height: 100px;
-	text-align: center;
-	line-height: 50px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  height: 100px;
+  text-align: center;
+  line-height: 50px;
 }
 
 .data-entry-value {
-	font-family: "Roboto", sans-serif;
-	font-weight: 200;
-	font-size: 30px;
-	margin-top: 10px;
-	text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+  font-size: 30px;
+  margin-top: 10px;
+  text-align: center;
 }
 
 @media (max-width: 800px) {
