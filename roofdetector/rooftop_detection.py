@@ -133,7 +133,7 @@ Surface Area: {} Meters".format(str(latitude), str(longitude),name, int(score*10
 
 
   response = {}
-  response['image']=image
+  response['image']=str(image)
   response['name']=name
   response['score']=score
   response['size']=size
