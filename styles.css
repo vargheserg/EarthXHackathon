@@ -112,13 +112,24 @@ body::-webkit-scrollbar-thumb {
 	display: flex;
 	flex-direction: column;
 }
-
+#legend-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  align-items: center;
+}
+#legend-title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+  font-size: 22px;
+  padding-top: 10px;
+}
 #legend-div {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
   width: 100%;
   height: 30px;
+  transform: translateY(-20px);
 }
 
 .legend-value {
@@ -132,6 +143,7 @@ body::-webkit-scrollbar-thumb {
   background-color: #FFF;
   width: 50px;
   height: 100%;
+  user-select: none;
 }
 
 #legend {
@@ -155,7 +167,12 @@ body::-webkit-scrollbar-thumb {
   font-size: 20px;
   width: 14px;
   color: black;
-  
+  -webkit-transition: all 0.35s ease-in-out;
+	-moz-transition: all 0.35s ease-in-out;
+	-ms-transition: all 0.35s ease-in-out;
+	-o-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+  user-select: none;
 }
 
 @media (max-width: 800px) {
