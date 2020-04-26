@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from roof-detector.get_map import get_map_img
 from roof-detector.rooftop_detection import get_map_img
-import requests
 import os
 
 app = Flask(__name__)
@@ -27,9 +26,11 @@ def stuff():
         category=roofCategory,
         confidence=confidence,
     )
+
 # Sample request
 # {
 #     "methods": "GET",
+#     "solar": "3.121",
 #     "lat": "7.721321321313",
 #     "lon": "7.721321321313",
 # }
