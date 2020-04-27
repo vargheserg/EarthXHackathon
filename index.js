@@ -74,7 +74,8 @@ function yesClick() {
     document.getElementById("energy-produced").innerHTML = `${Math.trunc(monthlyEnergyProduced)}`;
     document.getElementById("savings").innerHTML = `${Math.trunc(yearlySavingsAfterSP*25)}`;
     document.getElementById("consumption").innerHTML = `${Math.trunc(kWh)}`;
-
+    document.getElementById("bounding-confidence").innerHTML = `${(data.score*100).toFixed(2)}`;
+    document.getElementById("bounding-type").innerHTML = `${data.name}`;
     if (costYearlySavingsChart == null) {
       costYearlySavingsChart = new Chart(costYearlySavings, {
         type: 'doughnut',
