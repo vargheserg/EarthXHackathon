@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EarthxHacks</title>
+    <link rel="icon" type="image/png" href="https://imgur.com/mfteAUM.png" />
+    <title>Solaro</title>
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+    <link rel="stylesheet" href="./styles.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap" rel="stylesheet">
+  </head>
+  <body class="body">
+    <header class="header" style="position: relative;">
+      <div class="container" style="height: 100%;">
+        <div class="header-title">
+          <i class="sun outline icon"></i>Solaro
+        </div>
+        <div class="header-subtitle">Your roof can help the environment</div>
+      </div>
+    </header>
+    <div class="container" style="padding-top:10px;">
+      <div class="dashboard">
+        <div class="dashboard-map">
+          <div class="map">
+            <!-- <input id="address-input" placeholder="Type an address" type="text"> -->
+            <div class="ui icon fluid input">
+              <input id ="address-input2" type="text" placeholder="Search..." />
+              <i aria-hidden="true" class="search icon"></i>
+            </div>
+            <div style="flex:1;">
+            <div id="map"></div> </div>
+            <div id="legend-block">
+              <p id="legend-title">Solar Radiation (kWh/m<sup>2</sup>)</p>
+              <div id="legend-div">
+                <div class="legend-value">
+                  2.84
+                </div>
+                
+                <div id="legend">
+                  <span id="legend-indicator">&#9788</span>
+                </div>
+                <div class="legend-value">
+                  3.50
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-info">
+						<div id="city-name">Pick your House</div>
+        </div>
+      </div>
+    </div>
+    <div id="results">
+      <div id="result-image-div">
+        <div id="result-bounding">
+          <img style="display: none;" id="result-bounding-image" src="https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Bounding Box Of Building"  width="500px">
+          <div id="bounding-box-div">
+            <div class="bounding-item">
+              <div class="bounding-title">Roof Type: </div>
+              <div id="bounding-type" class="bounding-value">pyramid</div>
+            </div>
+            <div class="bounding-item">
+              <div class="bounding-title">Confidence: </div>
+              <div id="bounding-confidence" class="bounding-value">93.1312</div>
+            </div>
+          </div>
+        </div>
+        <div id="result-street">
+          <img style="display: none;" id="result-street-image" src="https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="Street View Image of Building" width="500px">
+        </div>
+      </div>   
+      <div id="results-text">
+        <div id="charts">
+          <canvas width="300px" height="300px" id="chart-cost-yearly-vs-savings-yearly"></canvas>
+        </div>
+        <div id="data">
+          <div class="data-entry">
+            <div class="data-entry-title">
+              Monthly energy produced (kWH)
+            </div>
+            <div id="energy-produced" class="data-entry-value">
+              2020
+            </div>
+          </div>
+          <div class="data-entry">
+            <div class="data-entry-title">
+              Monthly Energy Consumption (kWh)
+            </div>
+            <div id="consumption" class="data-entry-value">
+              2020
+            </div>
+          </div>
+          <div class="data-entry">
+            <div class="data-entry-title">
+              Savings after 25 years (CAD)
+            </div>
+            <div id="savings" class="data-entry-value">
+              2020
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <script src="./index.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhFGvR9_eW2muXvvJvUZ0wnCgT6kw6_1M&callback=initMap&sensor=false&libraries=places"
+      async
+      defer
+    ></script> 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  </body>
+</html>

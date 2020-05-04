@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:800&display=swap");
+
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.container {
+  background-color: #eaeaea;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.header {
+  display: flex;
+  justify-content: center;
+}
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+/* Responsive */
+
+
+
+
+
+.start {
+  width: 100%;
+  margin-top: 80px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* height: 100%; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#start-description {
+  min-width: 400px;
+  width: 55%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 110px;
+}
+
+#start-images {
+  min-width: 400px;
+  width: 45%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 75px;
+}
+
+.start-people {
+  width: 175px;
+  height: auto;
+  z-index: 10;
+  margin-top: 150px;
+}
+
+.start-people > img {
+  height: 100%;
+  width: 100%;
+  transform: translateY(-150px);
+}
+
+.start-house {
+  height: auto;
+  width: 450px;
+}
+
+.start-house > img {
+  height: 100%;
+  width: 100%;
+  transform: translateY(130px);
+}
+
+.start-sun {
+  width: 200px;
+  height: 200px;
+  margin-right: 200px;
+}
+
+.start-sun > img {
+  height: 100%;
+  width: 100%;
+}
+
+.start-text {
+  font-family: 'Work Sans';
+  width: 80%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.start-text_button {
+  margin-top: 20px !important;
+  background-color: #f0a500 !important;
+}
+
+.start-text_title {
+  color: #f0a500;
+  font-size: 55px;
+  line-height: 120%;
+  font-weight: 800;
+}
+
+.start-text_body {
+  margin-top: 20px;
+  font-size: 25px;
+  color: #5d5b6a;
+  line-height: 100%;
+}
+
+@media (hover: none), (max-width: 835px) {
+  
+}
+
+
+@media (max-width: 1000px) {
+  .start-people {
+
+  }
+  .start-house {
+    width: 400px;
+  }
+}
+/*# sourceMappingURL=home.css.map */

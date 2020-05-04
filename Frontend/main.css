@@ -1,0 +1,65 @@
+/* Always set the map height explicitly to define the size of the div
+		element that contains the map. */
+
+
+
+#map {
+	height: calc(100vh - 200px);
+	width: 100%;
+	overflow: hidden;
+}
+
+#address-input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	-webkit-box-shadow: 8px 8px 1px -3px rgba(0, 0, 0, 0.72);
+	-moz-box-shadow: 8px 8px 1px -3px rgba(0, 0, 0, 0.72);
+	box-shadow: 8px 8px 1px -3px rgba(0, 0, 0, 0.72);
+	appearance: none;
+	outline: none;
+	/* top: 20px;
+	left: 10px;
+	position: absolute; */
+	z-index: 4;
+	width: 350px;
+	height: 30px;
+	font-family: "Roboto", sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	border-radius: 12px;
+	text-indent: 10px;
+	overflow: hidden;
+	border: none;
+	/* -webkit-transition: all 0.35s ease-in-out;
+	-moz-transition: all 0.35s ease-in-out;
+	-ms-transition: all 0.35s ease-in-out;
+	-o-transition: all 0.35s ease-in-out;
+	transition: all 0.35s ease-in-out; */
+}
+
+#address-input:focus {
+	transform: scale(1.03);
+}
+#address-input:hover {
+	transform: scale(1.03);
+}
+
+.pac-item {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+.pac-container {
+	margin-left: 0px;
+}
+.pac-container::after {
+	content: none;
+}
+
+#info-window {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
