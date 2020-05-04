@@ -15,7 +15,7 @@ export default class test extends Component {
 							<div id="map" />
 							<script src="./index.js" />
 							<script
-								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhFGvR9_eW2muXvvJvUZ0wnCgT6kw6_1M&callback=initMap&sensor=false&libraries=places"
+								src="https://maps.googleapis.com/maps/api/js?key='YOUR_KEY'&callback=initMap&sensor=false&libraries=places"
 								async
 								defer
 							/>

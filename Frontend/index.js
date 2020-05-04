@@ -110,7 +110,7 @@ function yesClick() {
     );
     streetImage.style.display = "inline";
     streetImage.setAttribute(
-      'src', `https://maps.googleapis.com/maps/api/streetview?size=600x450&location=${buildingLatLng.lat()},${buildingLatLng.lng()}&fov=100&pitch=0&key=AIzaSyBhFGvR9_eW2muXvvJvUZ0wnCgT6kw6_1M`
+      'src', `https://maps.googleapis.com/maps/api/streetview?size=600x450&location=${buildingLatLng.lat()},${buildingLatLng.lng()}&fov=100&pitch=0&key="YOUR_KEY"`
     )
     results.style.display = "flex";
     results.scrollIntoView({ behavior: "smooth" });
