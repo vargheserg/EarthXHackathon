@@ -1,4 +1,10 @@
 # Solaro.
+**Your roof can help the environment**
+*Uzair Ahmed, Ritesh Ahlawat, Varghese George, Farhan Mohammed*
+
+**[https://devpost.com/software/saroof](htthttps://devpost.com/software/saroof)**
+
+![logo](https://github.com/vrgeo/EarthXHackathon/blob/master/images/logo.png)
 
 ## Inspiration
 Imagine you’re a prospective homeowner and you want to have an impact on the environment by installing solar panels. This is a big step, which takes a lot of research at times. You’ll want to know the potential efficiency, the type of technology most suitable, and whether the city you’re buying your new house is a hotspot for solar energy. It’s a daunting task and a roadblock for many wanting to install panels. With Solaro, we created an application that can guide you through the process by virtually analyzing your roof.
